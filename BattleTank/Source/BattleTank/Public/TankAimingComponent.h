@@ -42,7 +42,10 @@ protected:
 		EFiringStatus FiringStatus = EFiringStatus::Reloading;
 
 private:
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	virtual void BeginPlay() override;
 	void MoveBarrelTowards(FVector AimDirection);
+	bool IsBarrelMoving();
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
@@ -55,4 +58,5 @@ private:
 	UTankBarrel *Barrel = nullptr;
 	UTankTurret *Turret = nullptr;
 	float LastFireTime = 0.0f;
+	FVector AimDirection = FVector::ZeroVector;
 };
