@@ -17,6 +17,9 @@ public:
 	ATank();
 
 public:
+	UFUNCTION(BlueprintPure, Category = "Health")
+		float GetHealthPercent() const;
+
 	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
 private:
