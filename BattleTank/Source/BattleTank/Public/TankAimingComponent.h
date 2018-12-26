@@ -38,7 +38,7 @@ public:
 
 	EFiringStatus GetFiringStatus() const;
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-		int GetRoundsLeft() const;
+		int32 GetRoundsLeft() const;
 	void AimAt(FVector HitLocation);
 
 protected:
@@ -52,16 +52,17 @@ private:
 	bool IsBarrelMoving();
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-		float LaunchSpeed = 10000;	// cm/s
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		float LaunchSpeed = 10000;	// cm/s
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeInSeconds = 3.0f;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		int32 RoundsLeft = 3;
 
 	UTankBarrel *Barrel = nullptr;
 	UTankTurret *Turret = nullptr;
 	float LastFireTime = 0.0f;
 	FVector AimDirection = FVector::ZeroVector;
-	int RoundsLeft = 3;
 };
