@@ -19,4 +19,10 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		float AcceptanceRadius = 8000.0f;
+
+private:
+	UFUNCTION()
+		void OnPossessedTankDeath();
+
+	virtual void SetPawn(APawn * InPawn) override;
 };

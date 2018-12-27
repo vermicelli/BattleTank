@@ -23,6 +23,11 @@ protected:
 		void FoundAimingComponent(UTankAimingComponent *AimCompRef);
 
 private:
+	UFUNCTION()
+		void OnPossessedTankDeath();
+
+	virtual void SetPawn(APawn * InPawn) override;
+
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector &OutHitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLocation, FVector &OutLookDirection) const;
